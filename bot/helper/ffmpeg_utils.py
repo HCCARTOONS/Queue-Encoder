@@ -10,7 +10,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from subprocess import Popen, PIPE
 
-def encode(filepath):
+async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     nam = output_filepath.replace("_", " ")
@@ -32,19 +32,19 @@ def encode(filepath):
     os.remove(filepath)
     return output_filepath, og
 
-def get_thumbnail(filepath):
+async def get_thumbnail(filepath):
     outputfilepath='/bot/thumb.jpg/'
     screenshot_cmd ='-ss 00:30 -frames:v 1 -q:v 2'
     call(['ffmpeg', '-i', filepath] + screenshot_cmd.split() + [outputfilepath])
   
-def get_duration(filepath):
+async def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("duration"):
       return metadata.get('duration').seconds
     else:
       return 0
 
-def get_width_height(filepath):
+async def get_width_height(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("width") and metadata.has("height"):
       return metadata.get("width"), metadata.get("height")
