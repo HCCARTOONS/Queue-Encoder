@@ -27,9 +27,9 @@ async def help_message(app, message):
 async def encode_video(app, message):
     if message.document:
       if not message.document.mime_type in video_mimetype:
-        await message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
+        await message.reply_text("Invalid Video !\nMake Sure Its A Valid Video file.", quote=True)
         return
-    await message.reply_text("```Added to queue...```", quote=True)
+    await message.reply_text("Added to Queue Please Wait 🕔", quote=True)
     data.append(message)
     if len(data) == 1:
      await add_task(message)
