@@ -10,7 +10,7 @@ download_dir = os.environ.get("DOWNLOAD_DIR", "downloads/")
 sudo_users = list(set(int(x) for x in os.environ.get("SUDO_USERS").split()))
 ffmpeg = os.environ.get("FFMPEG", "")
 
-app = Client(":memory:", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+app = Client("nirusakibot", api_id=api_id, api_hash=api_hash, bot_token=bot_token, workers=2)
 
 data = []
 
