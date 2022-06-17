@@ -12,7 +12,7 @@ from subprocess import Popen, PIPE
 
 async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
-    output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
+    output_filepath = basefilepath + "PREM" + ".mkv"
     nam = output_filepath.replace("_", " ")
     nam = nam.replace(".", " ")
     nam = nam.replace("/bot/downloads/", "")
@@ -26,7 +26,7 @@ async def encode(filepath):
     if "episode_number" in new_name.keys():
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
-    og = joined_string + " [@R136a1Encodes]" + ".mkv"
+    og = joined_string + " [@RHc_CarToons]" + ".mkv"
     fmd = ffmpeg
     call(['ffmpeg', '-i', filepath] + fmd.split() + [output_filepath])
     os.remove(filepath)
